@@ -1,5 +1,5 @@
-﻿#define RELATORIO_DETALHADO
-//#define RELATORIO_RESUMIDO
+﻿//#define RELATORIO_DETALHADO
+#define RELATORIO_RESUMIDO
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -46,12 +46,9 @@ namespace Programa02
             Console.WriteLine("Data          Produto         Preco       TipoPagamento Nome                  Cidade                Região                Pais");
             Console.WriteLine("==========================================================================================================================================");
 
-            Attribute a = Attribute.GetCustomAttribute(typeof(Venda), typeof(FormatoDetalhadoAttribute));
-            FormatoDetalhadoAttribute formatoDetalhado = (FormatoDetalhadoAttribute)a;
-
             foreach (var venda in vendas)
             {
-                Console.WriteLine(formatoDetalhado.Formato
+                Console.WriteLine("{0}  {1}  {2}  {3}  {4}  {5}  {6}  {7}"
                             , venda.Data, venda.Produto, venda.Preco, venda.TipoPagamento, venda.Nome, venda.Cidade, venda.Estado, venda.Pais);
             }
         }
@@ -62,12 +59,10 @@ namespace Programa02
             Console.WriteLine("Data          Produto         Preco       TipoPagamento   ");
             Console.WriteLine("==========================================================");
 
-            Attribute a = Attribute.GetCustomAttribute(typeof(Venda), typeof(FormatoResumidoAttribute));
-            FormatoResumidoAttribute formatoResumido = (FormatoResumidoAttribute)a;
 
             foreach (var venda in vendas)
             {
-                Console.WriteLine(formatoResumido.Formato
+                Console.WriteLine("{0}  {1}  {2}  {3}"
                     , venda.Data, venda.Produto, venda.Preco, venda.TipoPagamento);
             }
         }
